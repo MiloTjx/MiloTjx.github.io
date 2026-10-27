@@ -1,0 +1,31 @@
+# Decap CMS 配置
+backend:
+  name: github
+  repo: MiloTjx/MiloTjx.github.io
+  branch: main
+  site_domain: MiloTjx.github.io
+  base_url: https://MiloTjx.github.io
+
+media_folder: assets/media
+public_folder: /assets/media
+
+collections:
+  - name: posts
+    label: 文章
+    folder: posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: title, label: 标题, widget: string }
+      - { name: date, label: 发布时间, widget: datetime }
+      - { name: category, label: 分类, widget: select, options: ["减脂日记", "投资复盘", "产品思考"] }
+      - { name: tags, label: 标签, widget: list }
+      - { name: excerpt, label: 摘要, widget: text }
+      - { name: body, label: 正文, widget: markdown }
+  - name: pages
+    label: 单页
+    files:
+      - name: about
+        label: 关于我
+        file: about.md
+        fields:
+          - { name: body, label: 正文, widget: markdown }
